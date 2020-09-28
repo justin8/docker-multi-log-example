@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  main-app:
+    build: ./container
+    volumes:
+      - logs:/logs
+  log1:
+    build: ./dummy-logger
+    volumes:
+      - logs:/logs
+    environment:
+      LOGFILE: "/logs/first_logfile.log"
+  log2:
+    build: ./dummy-logger
+    volumes:
+      - logs:/logs
+    environment:
+      LOGFILE: "/logs/second_logfile.log"
+volumes:
+  logs:
